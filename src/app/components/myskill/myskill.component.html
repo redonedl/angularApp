@@ -1,0 +1,88 @@
+<h1>My Skills <span class="badge badge-secondary">New</span></h1>
+
+
+<div class="card-deck">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#key</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">Country</th>
+            <th scope="col">Skill</th>
+            <th colspan="2" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let skill of itemArray">
+          <tr *ngIf="skill.uid === myUid">
+            
+            <td>{{skill.$key}}</td>
+            <td>{{skill.name}}</td>
+            <td>{{skill.address}}</td>
+            <td>{{skill.city}}</td>
+            <td>{{skill.country}}</td>
+            <td>{{skill.skill}}</td>
+            <td><button type="button" class="btn btn-info" (click)="editForm(skill.$key)" data-toggle="modal" data-target="#exampleModalCenter">Edit</button></td>
+            <td><button type="button" class="btn btn-danger" (click)="onDelete(skill.$key)">Delete</button></td>
+            
+          </tr>
+          
+        </tbody>
+    </table>
+</div>
+
+
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="inputEmail4">Full Name</label>
+                        <input type="email" class="form-control" placeholder="Full Name" name="$key" [(ngModel)]="data.$key" value="{{data.$key}}">
+                        
+                      </div>
+                  <div class="form-group col-md-12">
+                    <label for="inputEmail4">Full Name</label>
+                    <input type="email" class="form-control" placeholder="Full Name" name="name" [(ngModel)]="data.name" value="{{data.name}}">
+                    
+                  </div>
+                  
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress">Address</label>
+                  <input type="text" class="form-control" placeholder="1234 Main St" name="address" [(ngModel)]="data.address" value="{{data.address}}">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" name="city" [(ngModel)]="data.city" value="{{data.city}}">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputState">Country</label>
+                    <input type="text" class="form-control" name="country" [(ngModel)]="data.country" value="{{data.country}}">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputZip">Skill</label>
+                    <input type="text" class="form-control" name="skill" [(ngModel)]="data.skill" value="{{data.skill}}">
+                  </div>
+                </div>
+                
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="onEdit(data.$key)">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

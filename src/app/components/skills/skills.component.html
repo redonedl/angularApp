@@ -1,0 +1,32 @@
+<h1>All Skills <span class="badge badge-secondary">New</span></h1>
+
+
+<div class="card-deck">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#key</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">Country</th>
+            <th scope="col">Skill</th>
+            <th colspan="2" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let skill of itemArray">
+            <td>{{skill.$key}}</td>
+            <td>{{skill.name}}</td>
+            <td>{{skill.address}}</td>
+            <td>{{skill.city}}</td>
+            <td>{{skill.country}}</td>
+            <td>{{skill.skill}}</td>
+            <td><button type="button" class="btn btn-info"  data-toggle="modal" data-target="#exampleModalCenter" (click)="details(skill.$key)">Details</button></td>
+            
+          </tr>
+          
+        </tbody>
+    </table>
+</div>
+
